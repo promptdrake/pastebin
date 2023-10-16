@@ -29,26 +29,22 @@ app.get('/', (req, res) => {
       console.error(err);
       return res.status(500).send('Internal Server Error');
     }
-    const pasteCount = row.pasteCount; // Retrieve the paste count
+    const pasteCount = row.pasteCount;
 
-    const forkId = req.query.forkid; // Get the "forkid" query parameter
+    const forkId = req.query.forkid;
     if (forkId) {
-      // If "forkid" is provided, fetch data from the database
       db.get('SELECT kode FROM pastes WHERE endpoint = ?', [forkId], (err, row) => {
         if (err) {
           console.error(err);
           return res.status(500).send('Internal Server Error');
         }
         if (row) {
-          // If data is found, set the "kode" value in the response
           res.render('index', { paste: pasteCount, kode: row.kode });
         } else {
-          // If no data is found, render the page with an empty textarea
           res.render('index', { paste: pasteCount, kode: '' });
         }
       });
     } else {
-      // If "forkid" is not provided, render the page with an empty textarea
       res.render('index', { paste: pasteCount, kode: '' });
     }
   });
