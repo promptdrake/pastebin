@@ -1,0 +1,80 @@
+<head>
+  <title>PasteXD</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  </head>
+  <body>
+<style>
+  body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background: linear-gradient(160deg, #0093E9, #80D0C7);
+}
+
+.lock-screen {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+input[type="password"] {
+  width: 200px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+</style>
+<% if (info === 'ratelimited') { %>
+  <div class="lock-screen">
+    <h1>⚠️ Rate Limited</h1>
+    <p style="margin-top: -10px;">Chill Bro Are You want to destroy our server?</p>
+    <a href="#" onclick="history.go(-1)">Go Back</a>
+  </div>
+<% } else if (info === 'ilegalchar') { %>
+  <div class="lock-screen">
+    <h1>😭 Invalid Endpoint</h1>
+    <p style="margin-top: -10px;">Endpoint Have illegal character please use the endpoint text like<br><code>[ABC123]</code></p>
+    <a href="#" onclick="history.go(-1)">Go Back</a>
+  </div>
+    <% } else if (info === 'exist') { %>
+      <div class="lock-screen">
+        <h1>🥱 Url Already Exist</h1>
+        <p style="margin-top: -10px;">Please choose alternative endpoint</p>
+        <a href="#" onclick="history.go(-1)">Go Back</a>
+      </div>
+      <% } else if (info === 'nopaste') { %>
+        <div class="lock-screen">
+          <h1>🗑️ Where The paste?</h1>
+          <p style="margin-top: -10px;">You've Trying posting empty paste but don't worry its error from the server or did you inspect the element?</p>
+          <a href="#" onclick="history.go(-1)">Go Back</a>
+        </div>
+        <% } else { %>
+          <div class="lock-screen">
+            <h1>✅ Seems Good</h1>
+            <p style="margin-top: -10px;">The server running perfectly fine</p>
+            <a href="#" onclick="history.go(-1)">Go Back</a>
+          </div>
+          <% } %>
+</body>
